@@ -18,3 +18,7 @@
   background-color: #008cba;
   border-radius: 8px;
 }
+
+.visited {
+  background-color: aquamarine;
+}
