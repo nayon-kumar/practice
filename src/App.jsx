@@ -1,18 +1,28 @@
 import { Suspense } from "react";
 import "./App.css";
-import Countries from "./components/Countries/Countries";
+import Navbar from "./components/Navbar/Navbar";
+import PricingOptions from "./components/PricingOptions/PricingOptions";
 
-const countriesPromise = async () => {
-  const res = await fetch("https://openapi.programming-hero.com/api/all");
-  return res.json();
-};
+const pricingPromise = fetch("pricingData.json").then((res) => res.json());
 
 function App() {
   return (
     <>
-      <Suspense fallback={<p>Loading...</p>}>
-        <Countries countriesPromise={countriesPromise()}></Countries>
-      </Suspense>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <main>
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center mt-30">
+              <span className="loading loading-spinner loading-xl"></span>
+            </div>
+          }
+        >
+          <PricingOptions pricingPromise={pricingPromise}></PricingOptions>
+        </Suspense>
+      </main>
+      <footer></footer>
     </>
   );
 }
