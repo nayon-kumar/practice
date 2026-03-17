@@ -41,11 +41,11 @@ const Navbar = () => {
         {open ? <X className="sm:hidden" /> : <Menu className="sm:hidden" />}
 
         <ul
-          className={`absolute sm:hidden duration-500 ${open ? "top-9" : "-top-60"}`}
+          className={`absolute sm:hidden duration-500 ${open ? "top-18" : "-top-60"}`}
         >
           {links}
         </ul>
-        <h2 className="cursor-pointer font-bold text-2xl">My Navbar</h2>
+        <h2 className="cursor-pointer font-bold text-2xl">Logo</h2>
       </div>
       <div>
         <ul className="hidden sm:flex gap-4">{links}</ul>
