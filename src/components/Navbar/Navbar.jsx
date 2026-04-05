@@ -63,6 +63,12 @@ const Navbar = () => {
             <li>
               <NavLink to="/users">Users</NavLink>
             </li>
+            <li>
+              <NavLink to="/users2">Users 2</NavLink>
+            </li>
+            <li>
+              <NavLink to="/posts">Posts</NavLink>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
