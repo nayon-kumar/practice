@@ -1,58 +1,7 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import React from "react";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
-  const pathName = usePathname();
-  const links = (
-    <>
-      <li>
-        <Link className={`${pathName === "/" ? "active" : ""}`} href="/">
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/blogs" ? "active" : ""}`}
-          href="/blogs"
-        >
-          Blogs
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/dashbord" ? "active" : ""}`}
-          href="/dashbord"
-        >
-          Dashbord
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/users" ? "active" : ""}`}
-          href="/users"
-        >
-          Users
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/todos" ? "active" : ""}`}
-          href="/todos"
-        >
-          Todos
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/posts" ? "active" : ""}`}
-          href="/posts"
-        >
-          Posts
-        </Link>
-      </li>
-    </>
-  );
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
@@ -79,13 +28,15 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {links}
+              <NavLink />
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1">
+            <NavLink />
+          </ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Button</a>
