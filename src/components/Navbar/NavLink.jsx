@@ -15,46 +15,6 @@ const NavLink = () => {
           Home
         </Link>
       </li>
-      <li>
-        <Link
-          className={`${pathName === "/books" ? "text-red-500" : ""}`}
-          href={`/books`}
-        >
-          Books
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/products" ? "text-red-500" : ""}`}
-          href={`/products`}
-        >
-          Products
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/posts" ? "text-red-500" : ""}`}
-          href={`/posts`}
-        >
-          Posts
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/foods" ? "text-red-500" : ""}`}
-          href={`/foods`}
-        >
-          Foods
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${pathName === "/foods2" ? "text-red-500" : ""}`}
-          href={`/foods2`}
-        >
-          Foods2
-        </Link>
-      </li>
     </div>
   );
 };
