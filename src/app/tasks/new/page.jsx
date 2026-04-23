@@ -1,6 +1,5 @@
 "use client";
 import { addNewTask } from "@/lib/actions";
-import { Modal } from "@gravity-ui/uikit";
 import {
   Input,
   Label,
@@ -8,23 +7,41 @@ import {
   Select,
   ListBox,
   Button,
+  Form,
+  FieldError,
 } from "@heroui/react";
 import React from "react";
+import { useFormStatus } from "react-dom";
 
 const NewTasksPage = () => {
+  const { pending } = useFormStatus();
+  console.log("Status: ", pending);
   return (
     <div className="max-w-200 mx-auto mt-10">
       <h3>Add a new task: </h3>
-      <form action={addNewTask} className="flex flex-col gap-4">
-        <TextField className="w-full" name="title" type="text">
+      <Form action={addNewTask} className="flex flex-col gap-4">
+        <TextField
+          isRequired
+          minLength={8}
+          className="w-full"
+          name="title"
+          type="text"
+        >
           <Label>Title</Label>
           <Input placeholder="Enter your task title" />
+          <FieldError />
         </TextField>
-        <TextField className="w-full" name="description" type="text">
+        <TextField isRequired className="w-full" name="description" type="text">
           <Label>Description</Label>
           <Input placeholder="Enter your task description" />
+          <FieldError />
         </TextField>
-        <Select name="status" className="w-[256px]" placeholder="Select one">
+        <Select
+          isRequired
+          name="status"
+          className="w-[256px]"
+          placeholder="Select one"
+        >
           <Label>Status</Label>
           <Select.Trigger>
             <Select.Value />
@@ -46,8 +63,14 @@ const NewTasksPage = () => {
               </ListBox.Item>
             </ListBox>
           </Select.Popover>
+          <FieldError />
         </Select>
-        <Select name="priority" className="w-[256px]" placeholder="Select one">
+        <Select
+          isRequired
+          name="priority"
+          className="w-[256px]"
+          placeholder="Select one"
+        >
           <Label>Priority</Label>
           <Select.Trigger>
             <Select.Value />
@@ -69,18 +92,20 @@ const NewTasksPage = () => {
               </ListBox.Item>
             </ListBox>
           </Select.Popover>
+          <FieldError />
         </Select>
-        <TextField className="w-full" name="category">
+        <TextField isRequired className="w-full" name="category">
           <Label>Category</Label>
           <Input placeholder="Enter category" />
+          <FieldError />
         </TextField>
         <Button slot="close" variant="secondary">
           Cancel
         </Button>
         <Button slot="close" type="submit">
-          Submit Task
+          {pending ? "Loading..." : "Submit"}
         </Button>
-      </form>
+      </Form>
     </div>
   );
 };
