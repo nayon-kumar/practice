@@ -10,6 +10,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 
 const SignInPage = () => {
   const onSubmit = async (e) => {
@@ -33,8 +34,14 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="mt-10 mx-auto text-3xl font-bold">
-      <h3>Please sign in</h3>
+    <div className="mt-10 mx-auto ">
+      <div className="flex items-center gap-4 pb-4">
+        <p>Do not have accout? </p>
+        <Link href="/auth/signup" className="underline">
+          Sign Up
+        </Link>
+      </div>
+      <h3 className="text-3xl font-bold">Please sign in</h3>
       <div>
         <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
           <TextField
