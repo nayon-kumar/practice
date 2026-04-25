@@ -10,40 +10,33 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { useRouter } from "next/navigation";
 
-const SignUpPage = () => {
-  const router = useRouter();
+const SignInPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
-    const { data, error } = await authClient.signUp.email({
-      name,
+    const { data, error } = await authClient.signIn.email({
       email,
       password,
+      rememberMe: true,
       callbackURL: "/",
     });
     if (error) {
-      alert("Error singing up: " + error.message);
+      alert("Error singing in: " + error.message);
     } else {
-      alert("Sign up successfully!");
-      router.push("/");
+      alert("Sign in successfully!");
     }
     console.log("Status: ", data, error);
   };
+
   return (
-    <div className="mt-10 mx-auto">
-      <h3 className="text-3xl">Please sign up</h3>
+    <div className="mt-10 mx-auto text-3xl font-bold">
+      <h3>Please sign in</h3>
       <div>
         <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-          <TextField isRequired name="name" type="text">
-            <Label>Name</Label>
-            <Input placeholder="Your name" />
-            <FieldError />
-          </TextField>
           <TextField
             isRequired
             name="email"
@@ -99,4 +92,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
